@@ -56,16 +56,16 @@ listItemEl.appendChild(taskActionEl);
 
 switch (taskDataObj.status) {
   case "to do":
-    taskActionsEl.querySelector("select[name='status-change']").selectedIndex = 0;
+    taskActionEl.querySelector("select[name='status-change']").selectedIndex = 0;
     tasksToDoEl.append(listItemEl);
     break;
     case "in progress":
       taskActionEl.querySelector("select[name='status-change']").selectedIndex = 1;
-      tasksInProgressEl.append(listEl);
+      tasksInProgressEl.append(listItemEl);
       break;
       case "completed":
         taskActionEl.querySelector("select[name='status-change']").selectedIndex = 2;
-        tasksCompletedEl.append(listEl);
+        tasksCompletedEl.append(listItemEl);
         break;
       default:
       console.log("Something went wrong!")  
@@ -74,7 +74,7 @@ switch (taskDataObj.status) {
   //save task as an object with name, type, status, and id then push into task array
   taskDataObj.id= taskIdCounter;
   tasks.push(taskDataObj);
-  saveTasks();
+  savedTasks();
 
   taskIdCounter++;
 };
@@ -141,7 +141,7 @@ var completeEditTask = function(taskName, taskType, taskId) {
   formEl.removeAttribute("data-task-id");
   // update formEl button to go back to saying "Add Task" instead of "Edit Task"
   formEl.querySelector("#save-task").textContent = "Add Task";
-saveTasks();  
+savedTasks();  
 };
 
 var taskButtonHandler = function(event) {
@@ -183,7 +183,7 @@ var taskStatusChangeHandler = function(event) {
       tasks[i].status = statusValue;
     }
   }
-  saveTasks();
+  savedTasks();
 };
 
 var editTask = function(taskId) {
@@ -228,7 +228,7 @@ for (var i = 0; i < tasks.length; i++) {
 
 // reassign tasks array to be the same as updatedTaskArr
 tasks = updatedTaskArr;
-saveTasks();
+savedTasks();
 };
 
 var savedTasks = function() {
