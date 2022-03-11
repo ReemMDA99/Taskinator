@@ -230,7 +230,7 @@ pageContentEl.addEventListener("click", taskButtonHandler);
 // for changing the status
 pageContentEl.addEventListener("change", taskStatusChangeHandler);
 
-var saveTasks = function() {
+var savedTasks = function() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 var loadTasks = function(){
